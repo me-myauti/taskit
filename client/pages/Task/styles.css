@@ -1,0 +1,78 @@
+:root{
+    --base-color: #03e9f4;
+    --bg-color-dark: #141e30;
+    --bg-color-light: #243b55;
+}
+
+.task-box{
+    max-width: 42rem;
+    min-height: 10rem;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    background-color: var(--bg-color-dark);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 1rem;
+}
+
+.task{
+    width: 100%;
+    padding: 0.4rem;
+    background-color: var(--bg-color-dark);
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-block: 0.5rem;
+    color: white;
+    transition: 0.5s ease;
+    border: solid 2px var(--bg-color-light);
+}
+
+.title{
+    align-self: center;
+    color: white;
+    margin-block: 1rem;
+    text-transform: uppercase;
+}
+
+.task:hover{
+  transform: scale(1.02);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+}
+
+.task-content{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 45%;
+    align-self: center;
+}
+  
+.check{
+    display: flex;
+    max-height: 1.4rem;
+    align-self: center;
+    gap: 1rem;
+}
+
+.icon{
+    fill: var(--base-color);
+}
+
+.button{
+    cursor: pointer;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    transition: 0.5s;
+}
+
+.button .icon{
+    fill: #fff;
+}
+
+.button:hover{
+    fill: #fff;
+}
