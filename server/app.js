@@ -47,7 +47,7 @@ function checkToken(req,res,next){
 //Registration route
 app.post('/auth/register', async(req,res) =>{
     const {name, email, password, confirmPswd} = req.body
-    //Verifies if recieved email and password
+    //Verifies if received email and password
     if(!name){
         return res.status(422).json({err: "name is required!"})
     }
@@ -76,7 +76,7 @@ app.post('/auth/register', async(req,res) =>{
 
     const content = ''
     
-    //Create a new user with the info that has been recieved
+    //Create a new user with the info that has been received
     const user = new User({
         name,
         email,
@@ -114,7 +114,7 @@ app.post("/auth/user", async (req, res)=>{
         return res.status(422).json({err: "Invalid pswd"})
     }
     try {
-        const secret = process.env.secret
+        const secret = process.env.SECRET
 
         const token = jwt.sign(
             {
@@ -125,7 +125,7 @@ app.post("/auth/user", async (req, res)=>{
 
         res.status(200).json({msg: "User found!", token})
     } catch (error) {
-        res.status(500).json({err: "Erro no servidor"})
+        res.status(500).json({err: "Server error!"})
     }
 })
 
@@ -134,6 +134,6 @@ const dbPassword = process.env.DB_PASS
 mongoose.connect(`mongodb+srv://${dbUser}:${dbPassword}@crud-mongo.sna6ih4.mongodb.net/?retryWrites=true&w=majority`)
 .then(()=>{
     app.listen(3001)
-    console.log('Conectou ao banco')
+    console.log('Database connected')
 })
 .catch((err)=>console.log(err))
