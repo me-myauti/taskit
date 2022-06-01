@@ -16,12 +16,12 @@ const User = require('./models/User')
 
 app.get('/user/:id', checkToken, async (req, res) => {
   const id = req.params.id
+  
   const user = await User.findById(id, '-password')
 
   if (!user) {
     return res.status(404).json({ err: 'User not found!' })
   }
-
   res.status(200).json({ user })
 })
 
@@ -32,12 +32,11 @@ function checkToken(req, res, next) {
     return res.status(401).json({ err: 'access denied' })
   }
   try {
-    const secret = process.env.secret
+    const secret = process.env.SECRET
     jwt.verify(token, secret)
     next()
   } catch (error) {
     res.status(401).json({ err: 'Invalid token' })
-    console.log(error)
   }
 }
 
@@ -71,7 +70,7 @@ app.post('/auth/register', async (req, res) => {
   const salt = await bcrypt.genSalt(12)
   const pswdhash = await bcrypt.hash(password, salt)
 
-  const content = ''
+  const content = 'Comprar bananinha'
 
   //Create a new user with the info that has been received
   const user = new User({
@@ -118,7 +117,7 @@ app.post('/auth/user', async (req, res) => {
       secret
     )
 
-    res.status(200).json({ msg: 'User found!', token })
+    res.status(200).json({ id: user._id, token })
   } catch (error) {
     res.status(500).json({ err: 'Server error!' })
   }
