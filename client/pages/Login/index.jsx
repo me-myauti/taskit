@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from '../../services/axiosConf'
 import Loading from '../Loading'
+
 export default function Login() {
   let navigate = useNavigate()
   const redirect = () => {
@@ -20,22 +21,18 @@ export default function Login() {
     const userpswd = event.target.value
     setPassword(userpswd)
   }
-  const logIn = async () =>{
-    setIsLoading(true)
+  
+  const loginHandler = async () => {
     axios.post("http://localhost:3001/auth/user",{
-      email: email,
-      password: password
-    })
-    .then((res)=>{
-      const data = res.data
-      console.log(data)
-      navigate("/tasks")
-    })
-    .catch((err)=>{
-      setIsLoading(false)
-      const info = err.response.data
-      setError(info.err)
-    })
+        email: email,
+        password: password
+        }).then((res)=>{
+            const info = res.data
+            console.log(info.token)
+        }).catch((err)=>{
+          const info = err.data
+            console.log(info.err)
+        })
   }
 
   if(isLoading){
@@ -63,7 +60,7 @@ export default function Login() {
             </div>
   
             <div className="buttons">
-              <button type="button" onClick={logIn}>Submit</button>
+              <button type="button" onClick={loginHandler}>Submit</button>
               <button type="button" onClick={redirect}>Register</button>
             </div>
           </form>
