@@ -4,9 +4,47 @@ a {
   text-decoration: none;
 }
 
-:root{
+/* Icones-password */
+@font-face {
+  font-family: 'icomoon';
+  src: url('../assets/icons/fonts/icomoon.eot?jslodx');
+  src: url('../assets/icons/fonts/icomoon.eot?jslodx#iefix')
+      format('embedded-opentype'),
+    url('../assets/icons/fonts/icomoon.ttf?jslodx') format('truetype'),
+    url('../assets/icons/fonts/icomoon.woff?jslodx') format('woff'),
+    url('../assets/icons/fonts/icomoon.svg?jslodx#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
 
-/* font */
+[class^='icon-'],
+[class*=' icon-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-eye:before {
+  content: '\e915';
+}
+.icon-eye-off:before {
+  content: '\e916';
+}
+
+/* Icones-password */
+
+:root {
+  /* font */
   --black: #000000ff;
   --white: #ffffffff;
   --davys-grey: #494949ff;
@@ -23,7 +61,7 @@ a {
   font-family: 'Poppins', sans-serif;
 }
 
-.main-page{
+.main-page {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -35,7 +73,7 @@ a {
   background-color: var(--black);
 }
 
-.main{
+.main {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -80,6 +118,18 @@ a {
   background: transparent;
 }
 
+.user-box i {
+  margin-left: 1rem;
+  font-size: 23px;
+  position: relative;
+
+  color: white;
+
+  cursor: pointer;
+
+  margin-left: -30px;
+}
+
 .user-box label {
   position: absolute;
   top: 0;
@@ -107,7 +157,7 @@ a {
   gap: 1rem;
 }
 
-.buttons button { 
+.buttons button {
   display: flex;
   text-align: center;
   justify-content: center;
@@ -135,7 +185,7 @@ a {
     0 0 50px var(--base-color), 0 0 100px #03e9f4;
 }
 
-.message{
+.message {
   display: flex;
   color: crimson;
   font-weight: 300;
@@ -145,8 +195,3 @@ a {
   justify-content: center;
 }
 /* Login & Register styles */
-
-
-
-
-
