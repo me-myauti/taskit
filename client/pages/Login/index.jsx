@@ -22,22 +22,20 @@ export default function Login() {
     const userpswd = event.target.value
     setPassword(userpswd)
   }
-  const logIn = async () => {
-    setIsLoading(true)
+
+  const loginHandler = async () => {
     axios
       .post('http://localhost:3001/auth/user', {
         email: email,
         password: password
       })
       .then(res => {
-        const data = res.data
-        console.log(data)
-        navigate('/tasks')
+        const info = res.data
+        console.log(info.token)
       })
       .catch(err => {
-        setIsLoading(false)
-        const info = err.response.data
-        setError(info.err)
+        const info = err.data
+        console.log(info.err)
       })
   }
 
@@ -98,7 +96,7 @@ export default function Login() {
             </div>
 
             <div className="buttons">
-              <button type="button" onClick={logIn}>
+              <button type="button" onClick={loginHandler}>
                 Submit
               </button>
               <button type="button" onClick={redirect}>
